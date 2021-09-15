@@ -1,13 +1,18 @@
-Fork of https://github.com/tangrams/tangram-es.git for https://github.com/trey-c/oui.git
+Fork of ahttps://github.com/tangrams/tangram-es.git for https://github.com/trey-c/oui.git.
+
+**IF** msbuild.exe isn't located @ ```C:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\MSBuild\Current\Bin\MSBuild.exe``` launch Developer Command Prompt for VS 2019:
 
 ```shell
-> git clone https://github.com/trey-c/tangram-es.git
-> cd tangram-es
+> where msbuild.exe # Copy the output for later!
+```
+
+* With powershell. Also alternate paths for `C:\tangram-es-oui` are fine*
+
+```shell
+> git clone https://github.com/trey-c/tangram-es.git C:\tangram-es-oui
+> cd C:\tangram-es-oui
 > git submodule update --init
 > cmake -S . -B .\build -DTANGRAM_PLATFORM=oui -G "Visual Studio 16 2019" -DCMAKE_TOOLCHAIN_FILE="C:\vcpkg\scripts\buildsystems\vcpkg.cmake"
-> cmake --build build
-> mv maps.nim build\Debug\maps.nim
-> cd build
-> nim c --threads:on --CC:vcc maps.nim
-> .\maps.nim
+> C:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\MSBuild\Current\Bin\MSBuild.exe .\tangram.sln -t:Rebuild -p:Configuration=Release 
+> [Environment]::SetEnvironmentVariable("PATH", $env:Path + ";C:\tangram-es-oui\build\Release\", 'Machine')
 ```

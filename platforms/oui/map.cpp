@@ -100,6 +100,7 @@ OUI_EXPORT GLFWwindow* init_oui_map()
 {
   glfwInit();
   auto map = new Tangram::Map(std::make_unique<Tangram::OuiPlatform>());
+  glfwWindowHint(GLFW_DECORATED, GLFW_TRUE);
   glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
   glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
   auto win = glfwCreateWindow(100, 100, "", nullptr, nullptr);
